@@ -57,4 +57,14 @@ public class CalculadoraController {
 	public Resultado multiplicacao2(@RequestBody Numeros numeros) {
 		return operacoes.multiplicacao2(numeros);
 	}
+	
+	@GetMapping("/divisao1")
+	public Numeros divisao1(@RequestBody Numeros numeros) {
+		return operacoes.divisao1(numeros);
+	}
+	
+	@GetMapping("/divisao2")
+	public Resultado divisao2(@RequestBody Numeros numeros) {
+		return operacoes.divisao2(numeros);
+	}
 }

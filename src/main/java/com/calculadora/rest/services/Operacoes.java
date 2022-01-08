@@ -53,4 +53,17 @@ public class Operacoes {
 		return resultado;
 	}
 	
+	public Numeros divisao1(Numeros numeros) {
+		numeros.setResultado(numeros.getN1() / numeros.getN2());
+		
+		return numeros;
+	}
+
+	public Resultado divisao2(Numeros numeros) {
+	
+		resultado.setResultado(numeros.getN1() / numeros.getN2());
+		resultado.setContador(resultado.getContador() + 1);
+		
+		return resultado;
+	}
 }
