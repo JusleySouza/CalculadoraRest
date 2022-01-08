@@ -7,14 +7,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.calculadora.rest.exception.UnsupportedMathOperationsException;
 import com.calculadora.rest.model.Numeros;
 import com.calculadora.rest.model.Resultado;
 import com.calculadora.rest.services.Operacoes;
+import com.calculadora.rest.validator.Validations;
 
 @RestController
 @ RequestMapping("/calculadora")
 public class CalculadoraController {
 
+	Validations validations = new Validations();
+	
 	@Autowired
 	private Operacoes operacoes;
 	
@@ -60,6 +64,11 @@ public class CalculadoraController {
 	
 	@GetMapping("/divisao1")
 	public Numeros divisao1(@RequestBody Numeros numeros) {
+		
+		if(validations.divisaoPorZero(numeros)) {
+			throw new UnsupportedMathOperationsException(validations.getMensagem());
+		}
+		
 		return operacoes.divisao1(numeros);
 	}
 	
